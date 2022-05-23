@@ -1,12 +1,23 @@
 {
-  "private": true,
-  "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview"
-  },
-  "devDependencies": {
-    "nuxt": "3.0.0-rc.3"
-  }
+    "private": true,
+    "scripts": {
+        "build": "nuxt build",
+        "dev": "nuxt dev",
+        "generate": "nuxt generate",
+        "preview": "nuxt preview",
+        "test": "vitest run --coverage"
+    },
+    "devDependencies": {
+        "@nuxtjs/tailwindcss": "^5.0.4",
+        "@tailwindcss/aspect-ratio": "^0.4.0",
+        "@tailwindcss/forms": "^0.5.1",
+        "c8": "^7.11.3",
+        "nuxt": "3.0.0-rc.1",
+        "vitest": "^0.12.9"
+    },
+    "dependencies": {
+        "@pinia/nuxt": "^0.1.9",
+        "firebase": "^9.8.0",
+        "pinia": "^2.0.14"
+    }
 }
