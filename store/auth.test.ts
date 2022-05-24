@@ -27,5 +27,14 @@ describe("auth store", () => {
         expect(authStore.loggedIn).toBeTruthy();
     })
 
+    it("updates user details", () => {
+        const authStore = useAuthStore();
+        expect(authStore).toBeDefined();
+
+        authStore.saveUserDetails({ name: 'chiche' });
+
+        expect(authStore._userDetails).toContain({name: 'chiche'});
+    })
+
 
 })

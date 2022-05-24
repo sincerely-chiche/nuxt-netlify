@@ -1,8 +1,8 @@
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
-
+import { useAuthStore } from "@/store/auth";
 
 export const createUser = async (email: string, password: string) => {
-    const auth = await getAuth();
+    const auth = getAuth();
     const cred = await createUserWithEmailAndPassword(auth, email, password)
         .catch((error) => {
             const errorCode = error.code;
@@ -15,7 +15,7 @@ export const createUser = async (email: string, password: string) => {
     return cred;
 }
 export const signInUser = async (email: string, password: string) => {
-    const auth = await getAuth();
+    const auth = getAuth();
     const cred = await signInWithEmailAndPassword(auth, email, password)
         .catch((error) => {
             const errorCode = error.code;
@@ -25,24 +25,24 @@ export const signInUser = async (email: string, password: string) => {
     return cred;
 
 }
-export const initUser = async (email: string, password: string) => {
-    const auth = await getAuth();
+export const initUser = async () => {
+
+    const store = useAuthStore();
+
+    const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
         if (user) {
             const uid = user.uid;
-            console.log(uid);
-            // ...
         } else {
-            // User is signed out
-            // ...
+            console.log("signing out user");
         }
+        store.saveUserDetails(user);
     });
 }
 
 export const logoutUser = async () => {
-    const auth = await getAuth();
-    const result = await auth.signOut();
-    console.log(result);
+    const auth = getAuth();
+    await auth.signOut();
 }
 
 

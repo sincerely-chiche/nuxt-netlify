@@ -49,7 +49,7 @@
               </div>
             </div>
             
-            <div v-if="loggedIn" class="hidden md:block">
+            <div v-if="authStore.userDetails" class="hidden md:block">
               <div class="ml-4 flex items-center md:ml-6">
                 <button
                   type="button"
@@ -328,7 +328,6 @@ const authStore = useAuthStore();
 const route = useRoute();
 const router = useRouter();
 const menu = ref(false);
-const loggedIn = computed(() => authStore.loggedIn);
 
 
 
@@ -339,6 +338,7 @@ async function logout()  {
   authStore.changeLogging(false);
   router.replace('/');
 }
+
 </script>
 
 <style>
