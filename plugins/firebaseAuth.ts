@@ -10,7 +10,7 @@ export default defineNuxtPlugin(nuxtApp => {
 
     // Your web app's Firebase configuration
     const firebaseConfig = {
-        apiKey: "AIzaSyBKvPscL-5Puy7xRWmImRqScaBmLbjoslU",
+        apiKey: process.env.FIREBASE_API_KEY,
     };
 
     // Initialize Firebase
